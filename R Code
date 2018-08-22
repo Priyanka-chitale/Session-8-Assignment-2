@@ -1,0 +1,30 @@
+library(RcmdrPlugin.IPSUR)
+data(RcmdrTestDrive)
+
+#1. Compute the measures of central tendency for salary and reduction which variable has highest center?
+Salary = RcmdrTestDrive$salary
+Reduction = RcmdrTestDrive$reduction
+
+Salary_mean = mean(Salary)
+Salary_median = median(Salary)
+summary(Salary)
+
+hist(Salary,    
+     col="gray",  
+     main="Frequency of Salary", 
+     xlab="Salary count")    
+
+Reduction_mean = mean(Reduction)
+Reduction_median = median(Reduction)
+summary(Reduction)
+
+hist(Reduction,    
+     col="gray",  
+     main="Frequency of Reduction", 
+     xlab="Reduction count")    
+
+# 2. Which measure of center is more appropriate for before and after?
+
+library(lawstat)
+symmetry.test(RcmdrTestDrive[,"salary"], boot = FALSE)
+#as the distribution is asymmetric, median is more appropriate measure of centre. 
